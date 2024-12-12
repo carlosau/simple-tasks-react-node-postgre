@@ -7,7 +7,7 @@ button {
 }
 
 .container {
-  background-color: #dae0f5;
+  background: -webkit-linear-gradient(#8d8d8d, #8ed5ff);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,9 @@ button {
   background-color: white;
   width: 508px;
   height: 383px;
-  overflow-y: scroll;
+  overflow-y: visible;
+  border-radius: 10px;
+  box-shadow: 1px 3px 8px rgba(0,0,0, 0.09);
 }
 
 .todo {
@@ -47,7 +49,7 @@ button {
   margin: 10px;
 }
 .header {
-  background-color: #a879e6;
+  background-color: #7290e2;
   width: 508px;
   height: 60px;
   box-shadow: 0px 0px 21px -7px rgba(0, 0, 0, 0.3);
@@ -57,10 +59,11 @@ button {
   align-items: center;
   color: white;
   font-size: 0.8rem;
+  border-radius: 10px;
 }
 .newTaskButton {
   border: none;
-  background-color: #a879e6;
+  background-color: #4879ff;
   width: 160px;
   height: 50px;
   border-radius: 24px;
