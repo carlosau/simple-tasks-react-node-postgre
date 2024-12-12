@@ -3,31 +3,26 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
 import { useEffect, useState } from 'react';
 import axios from "axios"
 
-const arrayTodos = [
-  { name: "Organizar Arquivos PC", status: false },
-  { name: "Rezar rosário", status: false }
-]
-
-const Todos = ({ todos }) => {
-  return <div className='todos'>
-    {todos.map((todo) => {
-      return (
-        <div className='todo'>
-          <button className='checkbox' style={{backgroundColor: todo.status ? "#7290e2" : "white"}}></button>
-          <p>{todo.name}</p>
-          <button>
-            <AiOutlineEdit size={17}/>
-          </button>
-          <button>
-            <AiOutlineDelete size={17}/>
-          </button>
-        </div>
-      )
-    })}
-  </div>
-}
-
 function App() {
+  const Todos = ({ todos }) => {
+    return <div className='todos'>
+      {todos.map((todo) => {
+        return (
+          <div className='todo'>
+            <button className='checkbox' style={{backgroundColor: todo.status ? "#7290e2" : "white"}}></button>
+            <p>{todo.name}</p>
+            <button>
+              <AiOutlineEdit size={17}/>
+            </button>
+            <button onClick={() => deleteTodo(todo)}>
+              <AiOutlineDelete size={17}/>
+            </button>
+          </div>
+        )
+      })}
+    </div>
+  }
+
   async function handleWithNewButton() {
     setInputVisibility(!inputVisibility)
   }
@@ -44,6 +39,11 @@ function App() {
     getTodos()
     setInputVisibility(!inputVisibility)
     setInputValue('')
+  }
+  
+  async function deleteTodo(todo) {
+    await axios.delete(`http://localhost:3333/todos/${todo.id}`)
+    getTodos()
   }
 
   const [todos, setTodos] = useState([])
